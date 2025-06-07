@@ -61,17 +61,31 @@ Complete the provided C++ programs `signal-receiver.cpp` and `signal-sender.cpp`
 - **Sender** 📩: Accepts a PID and signal number as command-line arguments and sends the signal to the specified process.
 
 Answer the following:
-- ❓ What is the difference between the **SIGINT** and **SIGKILL** signals?
-- ❓ Which signals can be caught or handled by a process?
-- ❓ How many signals are defined in Linux?
+### 🔹 Difference between SIGINT and SIGKILL
+- **SIGINT** (`signal 2`): Sent when you press `Ctrl+C`. Can be **caught, ignored, or handled** by the process.
+- **SIGKILL** (`signal 9`): Immediately terminates the process. **Cannot be caught, ignored, or handled**.
 
+### 🔹 Signals that can be caught or handled
+- Most signals **except** `SIGKILL (9)` and `SIGSTOP (19)` can be caught or handled using signal handlers.
+
+### 🔹 Number of signals in Linux
+- Typically, **64 signals** are defined (`1–64`) in modern Linux systems (check with `kill -l`).
 #### 3. Shared Memory
 Complete the provided C++ programs `shm-writer.cpp` and `shm-reader.cpp`:
 - **Writer** ✍️: Creates a shared memory segment and writes user input into a **10-character circular buffer**.
 - **Reader** 📖: Reads and displays the contents of the shared memory upon execution.
 
 Answer the following:
-- ❓ What are the key differences between FIFO and shared memory for IPC?
+### 🔹 Key Differences Between FIFO and Shared Memory (IPC)
+
+| Feature           | FIFO (Named Pipe)                  | Shared Memory                         |
+|------------------|------------------------------------|---------------------------------------|
+| **Speed**         | Slower (uses kernel buffers)       | Faster (direct memory access)         |
+| **Data Flow**     | Unidirectional or bidirectional    | Bidirectional                         |
+| **Persistence**   | Exists as a file in the filesystem | Exists in memory only                 |
+| **Setup**         | Easier to set up                   | Requires synchronization mechanisms   |
+| **Communication** | Through file I/O                   | Through memory read/write             |
+| **Use Case**      | Simple command/data passing        | High-performance, large data sharing  |
 
 ---
 

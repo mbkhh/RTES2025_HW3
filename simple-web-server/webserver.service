@@ -1,0 +1,16 @@
+[Unit]
+Description=Simple Web Server
+After=network-online.target 
+Wants=network-online.target
+Requires=network.target
+ 
+[Service]
+Type=simple
+ExecStart=/home/mbkh/lesson/emb/HW3/RTES2025_HW3/simple-web-server/simple-web-server.sh
+StandardOutput=journal
+StandardError=journal
+Restart=always
+RestartSec=5
+ 
+[Install]
+WantedBy=multi-user.target
